@@ -33,6 +33,9 @@ class Controller_Eth extends Controller_Template
 	    $coin = Model_Coin::find('all');
 	    $view = View::forge('eth/sell');
 	    $view->coin = $coin;
+
+        $count = Service_Transaction::count_all();
+        $this->template->count = $count;
         $this->template->content = $view;
 //		return Response::forge($view);
 	}
@@ -52,6 +55,9 @@ class Controller_Eth extends Controller_Template
         $view->coin_number = $sell_model->coin_number;
         $coin = Model_Coin::find('all');
         $view->coin = $coin;
+
+        $count = Service_Transaction::count_all();
+        $this->template->count = $count;
         $this->template->content = $view;
     }
 
@@ -59,6 +65,9 @@ class Controller_Eth extends Controller_Template
         $coin = Model_Coin::find('all');
         $view = View::forge('eth/buy');
         $view->coin = $coin;
+
+        $count = Service_Transaction::count_all();
+        $this->template->count = $count;
         $this->template->content = $view;
     }
 
@@ -78,6 +87,9 @@ class Controller_Eth extends Controller_Template
         $view->money = $sell_model->money;
         $coin = Model_Coin::find('all');
         $view->coin = $coin;
+
+        $count = Service_Transaction::count_all();
+        $this->template->count = $count;
 
         $this->template->content = $view;
     }

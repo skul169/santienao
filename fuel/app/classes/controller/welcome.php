@@ -31,6 +31,10 @@ class Controller_Welcome extends Controller_Template
 	public function action_index()
 	{
 	    $view = View::forge('welcome/index');
+	    $view->price = Service_Transaction::get_price_eth();
+
+	    $count = Service_Transaction::count_all();
+        $this->template->count = $count;
         $this->template->content = $view;
 //		return Response::forge();
 	}
