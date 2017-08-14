@@ -19,8 +19,9 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Eth extends Controller
+class Controller_Eth extends Controller_Template
 {
+    public $template = 'template';
 	/**
 	 * The basic welcome message
 	 *
@@ -32,7 +33,8 @@ class Controller_Eth extends Controller
 	    $coin = Model_Coin::find('all');
 	    $view = View::forge('eth/sell');
 	    $view->coin = $coin;
-		return Response::forge($view);
+        $this->template->content = $view;
+//		return Response::forge($view);
 	}
 
     public function post_sell()
@@ -50,15 +52,14 @@ class Controller_Eth extends Controller
         $view->coin_number = $sell_model->coin_number;
         $coin = Model_Coin::find('all');
         $view->coin = $coin;
-
-        return Response::forge($view);
+        $this->template->content = $view;
     }
 
     public function get_buy() {
         $coin = Model_Coin::find('all');
         $view = View::forge('eth/buy');
         $view->coin = $coin;
-        return Response::forge($view);
+        $this->template->content = $view;
     }
 
     public function post_buy()
@@ -78,7 +79,7 @@ class Controller_Eth extends Controller
         $coin = Model_Coin::find('all');
         $view->coin = $coin;
 
-        return Response::forge($view);
+        $this->template->content = $view;
     }
 
 }
