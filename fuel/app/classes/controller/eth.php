@@ -42,6 +42,7 @@ class Controller_Eth extends Controller_Template
         $sell_model = new Model_Sell();
         $sell_model->coin_number = Input::post('quantity');
         $sell_model->bank_number = Input::post('accountNumber');
+        $sell_model->status = 0;
 
         $price = Service_Transaction::get_price_eth();
         $sell_model->money = $price['sell'] * $sell_model->coin_number;
@@ -68,6 +69,7 @@ class Controller_Eth extends Controller_Template
         $sell_model = new Model_Buy();
         $sell_model->coin_number = Input::post('quantity');
         $sell_model->coin_address = Input::post('accountNumber');
+        $sell_model->status = 0;
 
         $price = Service_Transaction::get_price_eth();
         $sell_model->money = $price['buy'] * $sell_model->coin_number;

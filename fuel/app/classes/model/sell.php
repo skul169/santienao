@@ -7,6 +7,7 @@ class Model_Sell extends \Orm\Model
         'coin_number',
         'bank_number',
         'money',
+        'status',
         'created_at',
         'updated_at',
     );

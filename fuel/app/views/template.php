@@ -6,12 +6,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
+    <style>
+        input.has-error {
+            border: #b94a48;
+            color: #b94a48;
+        }
+        span.has-error {
+            color: #b94a48;
+        }
+    </style>
 
     <title>Jumbotron Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
 
 </head>
 
@@ -27,29 +43,29 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/"><?php echo \Lang::get('fields.home'); ?> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Điều Khoản</a>
+                <a class="nav-link" href="#"><?php echo \Lang::get('fields.term'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Hướng Dẫn</a>
+                <a class="nav-link" href="#"><?php echo \Lang::get('fields.manual'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tin Tức</a>
+                <a class="nav-link" href="#"><?php echo \Lang::get('fields.news'); ?></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Ngôn ngữ</a>
+                   aria-haspopup="true" aria-expanded="false"><?php echo \Lang::get('fields.language'); ?></a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Tiếng Việt</a>
-                    <a class="dropdown-item" href="#">Tiếng Anh</a>
+                    <a class="dropdown-item" href="/welcome/language/vi"><?php echo \Lang::get('fields.vietnamese'); ?></a>
+                    <a class="dropdown-item" href="/welcome/language/en"><?php echo \Lang::get('fields.english'); ?></a>
                 </div>
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <a class="nav-link" href="#">Đăng ký</a>
-            <a class="nav-link" href="#">Đăng nhập</a>
+            <a class="nav-link" href="#"><?php echo \Lang::get('fields.register'); ?></a>
+            <a class="nav-link" href="#"><?php echo \Lang::get('fields.login'); ?></a>
         </div>
     </div>
 </nav>
@@ -61,18 +77,18 @@
                 <?php echo empty($content) ? '' : $content; ?>
             </div>
             <div class="col-md-4">
-                <h2>Vốn hóa</h2>
-                <div class="row">Tổng khối lượng giao dịch</div>
+                <h2><?php echo \Lang::get('fields.funds'); ?></h2>
+                <div class="row"><?php echo \Lang::get('fields.total_transaction'); ?></div>
                 <ul>
-                    <li>Khối lượng giao dịch MUA: <?php echo isset($count['buy']) ? number_format($count['buy']) : 0; ?> ETH</li>
-                    <li>Khối lượng giao dịch BÁN: <?php echo isset($count['sell']) ? number_format($count['sell']) : 0; ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo isset($count['buy']) ? number_format($count['buy']) : 0; ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo isset($count['sell']) ? number_format($count['sell']) : 0; ?> ETH</li>
                 </ul>
-                <div class="row">Tổng khối lượng giao dịch 24h</div>
+                <div class="row"><?php echo \Lang::get('fields.total_transaction_24'); ?></div>
                 <ul>
-                    <li>Khối lượng giao dịch MUA: <?php echo isset($count['buy24']) ? number_format($count['buy24']) : 0;?> ETH</li>
-                    <li>Khối lượng giao dịch BÁN: <?php echo isset($count['sell24']) ? number_format($count['sell24']) : 0; ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo isset($count['buy24']) ? number_format($count['buy24']) : 0;?> ETH</li>
+                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo isset($count['sell24']) ? number_format($count['sell24']) : 0; ?> ETH</li>
                 </ul>
-                <h2>Hỗ trợ</h2>
+                <h2><?php echo \Lang::get('fields.support'); ?></h2>
                 <h5>Live chat:</h5>
                 <h5>Email: admin@gmail.com</h5>
             </div>
@@ -83,17 +99,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
 <!--        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
 <!--        crossorigin="anonymous"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
-
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script type="text/javascript">
@@ -185,5 +194,18 @@
     });
 
 </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5992ff061b1bed47ceb04bad/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 </html>

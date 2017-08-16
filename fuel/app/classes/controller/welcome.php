@@ -61,4 +61,9 @@ class Controller_Welcome extends Controller_Template
 	{
 		return Response::forge(Presenter::forge('welcome/404'), 404);
 	}
+
+	public function action_language($lang = 'vi') {
+	    Session::set('language', $lang);
+	    return Response::redirect('/');
+    }
 }

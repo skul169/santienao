@@ -7,6 +7,7 @@ class Model_Buy extends \Orm\Model
         'coin_number',
         'money',
         'coin_address',
+        'status',
         'created_at',
         'updated_at',
     );
