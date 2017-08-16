@@ -43,29 +43,29 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/"><?php echo \Lang::get('fields.home'); ?> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Điều Khoản</a>
+                <a class="nav-link" href="#"><?php echo \Lang::get('fields.term'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Hướng Dẫn</a>
+                <a class="nav-link" href="#"><?php echo \Lang::get('fields.manual'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tin Tức</a>
+                <a class="nav-link" href="#"><?php echo \Lang::get('fields.news'); ?></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Ngôn ngữ</a>
+                   aria-haspopup="true" aria-expanded="false"><?php echo \Lang::get('fields.language'); ?></a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Tiếng Việt</a>
-                    <a class="dropdown-item" href="#">Tiếng Anh</a>
+                    <a class="dropdown-item" href="/welcome/language/vi"><?php echo \Lang::get('fields.vietnamese'); ?></a>
+                    <a class="dropdown-item" href="/welcome/language/en"><?php echo \Lang::get('fields.english'); ?></a>
                 </div>
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <a class="nav-link" href="#">Đăng ký</a>
-            <a class="nav-link" href="#">Đăng nhập</a>
+            <a class="nav-link" href="#"><?php echo \Lang::get('fields.register'); ?></a>
+            <a class="nav-link" href="#"><?php echo \Lang::get('fields.login'); ?></a>
         </div>
     </div>
 </nav>
@@ -77,18 +77,18 @@
                 <?php echo empty($content) ? '' : $content; ?>
             </div>
             <div class="col-md-4">
-                <h2>Vốn hóa</h2>
-                <div class="row">Tổng khối lượng giao dịch</div>
+                <h2><?php echo \Lang::get('fields.funds'); ?></h2>
+                <div class="row"><?php echo \Lang::get('fields.total_transaction'); ?></div>
                 <ul>
-                    <li>Khối lượng giao dịch MUA: <?php echo number_format($count['buy']); ?> ETH</li>
-                    <li>Khối lượng giao dịch BÁN: <?php echo number_format($count['sell']); ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo number_format($count['buy']); ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo number_format($count['sell']); ?> ETH</li>
                 </ul>
-                <div class="row">Tổng khối lượng giao dịch 24h</div>
+                <div class="row"><?php echo \Lang::get('fields.total_transaction_24'); ?></div>
                 <ul>
-                    <li>Khối lượng giao dịch MUA: <?php echo number_format($count['buy24']); ?> ETH</li>
-                    <li>Khối lượng giao dịch BÁN: <?php echo number_format($count['sell24']); ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo number_format($count['buy24']); ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo number_format($count['sell24']); ?> ETH</li>
                 </ul>
-                <h2>Hỗ trợ</h2>
+                <h2><?php echo \Lang::get('fields.support'); ?></h2>
                 <h5>Live chat:</h5>
                 <h5>Email: admin@gmail.com</h5>
             </div>
