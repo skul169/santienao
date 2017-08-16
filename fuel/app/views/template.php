@@ -64,13 +64,13 @@
                 <h2>Vốn hóa</h2>
                 <div class="row">Tổng khối lượng giao dịch</div>
                 <ul>
-                    <li>Khối lượng giao dịch MUA: <?php echo number_format($count['buy']); ?> ETH</li>
-                    <li>Khối lượng giao dịch BÁN: <?php echo number_format($count['sell']); ?> ETH</li>
+                    <li>Khối lượng giao dịch MUA: <?php echo isset($count['buy']) ? number_format($count['buy']) : 0; ?> ETH</li>
+                    <li>Khối lượng giao dịch BÁN: <?php echo isset($count['sell']) ? number_format($count['sell']) : 0; ?> ETH</li>
                 </ul>
                 <div class="row">Tổng khối lượng giao dịch 24h</div>
                 <ul>
-                    <li>Khối lượng giao dịch MUA: <?php echo number_format($count['buy24']); ?> ETH</li>
-                    <li>Khối lượng giao dịch BÁN: <?php echo number_format($count['sell24']); ?> ETH</li>
+                    <li>Khối lượng giao dịch MUA: <?php echo isset($count['buy24']) ? number_format($count['buy24']) : 0;?> ETH</li>
+                    <li>Khối lượng giao dịch BÁN: <?php echo isset($count['sell24']) ? number_format($count['sell24']) : 0; ?> ETH</li>
                 </ul>
                 <h2>Hỗ trợ</h2>
                 <h5>Live chat:</h5>

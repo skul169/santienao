@@ -273,7 +273,7 @@ return array(
 		 * );
 		 */
 		 'packages'  => array(
-		 	'orm',
+			'orm',
 		 ),
 
 		/**
@@ -311,5 +311,11 @@ return array(
 		 */
 		// 'language'  => array(),
 	 ),
+	 // add by DucVM => load auth
+	'always_load' => array(
+		'packages' => array(
+			'auth',
+		),
+	),
 
 );
