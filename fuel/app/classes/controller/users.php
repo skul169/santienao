@@ -2,7 +2,7 @@
 
 class Controller_Users extends Controller_Template {
 
-	public $template = 'template';
+	public $template = 'template_user';
 
 	// Dang nhap
 	public function action_login() {
@@ -11,17 +11,16 @@ class Controller_Users extends Controller_Template {
 		}
 
 		if (Input::method() == 'POST') {
-			//Log::debug('$var is now ');
 			if (Auth::login(Input::post('email'), Input::post('password'))) {
 				Session::set_flash('success', 'Bạn đăng nhập thành công!');
 				Response::redirect('welcome/hello');
 			} else {
-				//echo "<h1>786786768</h1>";
 				Session::set_flash('error', 'Đăng nhập lỗi, vui lòng thử lại!');
 			}
 		}
 		$this->template->title = 'Login';
 		$this->template->content = View::forge('users/login');
+		// return Response::forge(Presenter::forge('users/login'));
 	}
 
 	// Dang xuat
@@ -34,12 +33,15 @@ class Controller_Users extends Controller_Template {
 	// Dang ky user
 	public function action_register() {
 		if (Auth::check()) {
-			Response::redirect('dashboard');
+			Response::redirect('welcome/hello');
 		}
 		if (Input::method() == 'POST') {
 			$data['username'] = Input::post('username');
+			$data['email'] = Input::post('email');
 			try {
-				$create_process = Auth::create_user(Input::post('username'), Input::post('password'));
+				// $val->add_field('username', 'Your username', 'required');
+				$create_process = Auth::create_user(Input::post('username'), Input::post('password'), Input::post('email'));
+
 				if ($create_process) {
 					Session::set_flash('success', 'Đăng ký thành công!');
 					Response::redirect('/login');

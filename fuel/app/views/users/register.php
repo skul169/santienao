@@ -63,18 +63,36 @@
 		text-align: center;
 	}
 </style>
+<script type="text/javascript">
+	$(function() {
+		$('form').addClass('form-horizontal').attr('id', 'register');
+		$('#confirm_password').on('keyup', function () {
+			// alert(1);
+			if ($('#password').val() == $('#confirm_password').val()) {
+				$('#message').html('Trùng khớp với mật khẩu!').css('color', 'green');
+				$('#reg').prop('disabled', false);
+			} else {
+				$('#message').html('Không trùng khớp với mật khẩu!').css('color', 'red');
+				$('#reg').prop('disabled', true);
+				return false;
+			}
+		});
+	});
+	
+</script>
 
 <div class="container">
 	<div class="row main">
 		<div class="main-login main-center">
 			<div class="panel-heading">
 				<div class="panel-title text-center">
-					<h2 class="title">Đăng nhập</h2>
+					<h2 class="title">Đăng ký</h2>
 					<hr />
 				</div>
 			</div> 
 
-			<?php echo Form::open('users/login'); ?>
+			<?php echo Form::open('users/register'); ?>
+
 				<div class="form-group">
 					<label for="email" class="cols-sm-2 control-label">Email</label>
 					<div class="cols-sm-10">
@@ -88,24 +106,49 @@
 				</div>
 
 				<div class="form-group">
-					<label for="password" class="cols-sm-2 control-label">Mật khẩu</label>
+					<label for="username" class="cols-sm-2 control-label">Tên đăng nhập</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 							<?php
-								echo Form::input('password', '', array('type' => 'password', 'id' => 'password', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Mật khẩu'));
+								echo Form::input('username', '', array('type' => 'text', 'id' => 'username', 'class' => 'form-control', 'placeholder' => 'Tên đăng nhập', 'autofocus' => '', 'required' => ''));
 							?>
 						</div>
 					</div>
 				</div>
 
+				<div class="form-group">
+					<label for="password" class="cols-sm-2 control-label">Mật khẩu</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<?php
+								echo Form::input('password', '', array('type' => 'password', 'id' => 'password', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Mật khẩu', 'minlength' => '6'));
+							?>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Xác nhận mật khẩu</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<?php
+								echo Form::input('confirm_password', '', array('type' => 'password', 'id' => 'confirm_password', 'class' => 'form-control', 'placeholder' => 'Xác nhận mật khẩu', 'required' => ''));
+							?>
+						</div>
+						<span id='message'></span>
+					</div>
+				</div>
+
 				<div class="form-group ">
 					<?php
-						echo Form::button('login', 'Đăng nhập', array('type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block login-button', 'id' => 'reg'));
+						echo Form::button('register', 'Đăng ký', array('type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block login-button', 'id' => 'reg'));
 					?>
 				</div>
 				<div class="login-register">
-					<a href="#"><h6><u><i>Đăng ký</i></u></h6></a>
+					<a href="#"><h6><u><i>Đăng nhập</i></u></h6></a>
 				</div>
 			<?php echo Form::close(); ?>
 		</div>
