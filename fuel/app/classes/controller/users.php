@@ -60,14 +60,14 @@ class Controller_Users extends Controller_Template {
 					Session::set_flash('error', 'Đăng ký không thành công, vui lòng thử lại!');
 				}
 			} catch (Exception $exc) {
-				if ($exc->getCode() == 2)
-				{
-					\Messages::error(__('login.email-already-exists'));
-				}
-				elseif ($exc->getCode() == 3)
-				{
-					\Messages::error(__('login.username-already-exists'));
-				}
+				// if ($exc->getCode() == 2)
+				// {
+				// 	\Messages::error(__('login.email-already-exists'));
+				// }
+				// elseif ($exc->getCode() == 3)
+				// {
+				// 	\Messages::error(__('login.username-already-exists'));
+				// }
 				Session::set_flash('error', $exc->getMessage());
 			}
 			$this->template->content = View::forge('users/register', $data);
@@ -105,7 +105,7 @@ class Controller_Users extends Controller_Template {
 
         // add from- and to address
         $from = \Config::get('application.email-addresses.from.website', 'website@example.org');
-        $email->from($from['email'], $from['name']);
+        $email->from('application.email-addresses.from.website', 'website@example.org');
         $email->to('d.0909660093@gmail.com', 'abc');
 
 		$email_data['name'] = "Chào " . Input::post('username'). ", " ."<br><br>" ;
