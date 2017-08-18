@@ -4,6 +4,7 @@ class Model_Buy extends \Orm\Model
 {
     protected static $_properties = array(
         'id',
+        'transaction_id',
         'coin_number',
         'money',
         'coin_address',

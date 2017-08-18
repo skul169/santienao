@@ -40,6 +40,7 @@ class Controller_Eth extends Controller_Template
     public function post_sell()
     {
         $sell_model = new Model_Sell();
+        $sell_model->transaction_id = uniqid();
         $sell_model->coin_number = Input::post('quantity');
         $sell_model->bank_number = Input::post('accountNumber');
         $sell_model->status = 0;
@@ -66,18 +67,22 @@ class Controller_Eth extends Controller_Template
 
     public function post_buy()
     {
-        $sell_model = new Model_Buy();
-        $sell_model->coin_number = Input::post('quantity');
-        $sell_model->coin_address = Input::post('accountNumber');
-        $sell_model->status = 0;
+        $buy_model = new Model_Buy();
+        $buy_model->coin_number = Input::post('quantity');
+        $buy_model->coin_address = Input::post('accountNumber');
+        $buy_model->status = 0;
+        $buy_model->transaction_id = uniqid();
 
         $price = Service_Transaction::get_price_eth();
-        $sell_model->money = $price['buy'] * $sell_model->coin_number;
-        $sell_model->save();
+        $buy_model->money = $price['buy'] * $buy_model->coin_number;
+        $buy_model->save();
 
         $view = View::forge('eth/after_buy');
-        $view->coin_number = $sell_model->coin_number;
-        $view->money = $sell_model->money;
+        $view->coin_number = $buy_model->coin_number;
+        $view->money = $buy_model->money;
+        $view->transaction_id = $buy_model->transaction_id;
+        $view->coin_address = $buy_model->coin_address;
+        $view->id = $buy_model->id;
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
