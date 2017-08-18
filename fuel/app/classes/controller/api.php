@@ -26,14 +26,14 @@ class Controller_Api extends Controller_Rest {
 
     public function post_update_buy() {
         $buy = Model_Buy::find(Input::post('order_id'));
-        $buy->status = 1;
+        $buy->status = Input::post('status', 99);
         $buy->save();
         return $this->response(['success' => true]);
     }
 
     public function post_update_sell() {
         $sell = Model_Sell::find(Input::post('order_id'));
-        $sell->status = 1;
+        $sell->status = Input::post('status', 99);
         $sell->save();
         return $this->response(['success' => true]);
     }
