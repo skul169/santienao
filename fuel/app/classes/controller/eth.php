@@ -40,6 +40,7 @@ class Controller_Eth extends Controller_Template
     public function post_sell()
     {
         $sell_model = new Model_Sell();
+        $sell_model->transaction_id = uniqid();
         $sell_model->coin_number = Input::post('quantity');
         $sell_model->bank_number = Input::post('accountNumber');
         $sell_model->status = 0;
