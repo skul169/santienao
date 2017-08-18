@@ -60,14 +60,6 @@ class Controller_Users extends Controller_Template {
 					Session::set_flash('error', 'Đăng ký không thành công, vui lòng thử lại!');
 				}
 			} catch (Exception $exc) {
-				// if ($exc->getCode() == 2)
-				// {
-				// 	\Messages::error(__('login.email-already-exists'));
-				// }
-				// elseif ($exc->getCode() == 3)
-				// {
-				// 	\Messages::error(__('login.username-already-exists'));
-				// }
 				Session::set_flash('error', $exc->getMessage());
 			}
 			$this->template->content = View::forge('users/register', $data);
@@ -83,30 +75,10 @@ class Controller_Users extends Controller_Template {
 		$url = Uri::base(false);
 		//echo Config::get('base_url'). "user/activate/". $user['hash'];
 		$email = Email::forge();
-		// $email->from('vivu.vivu11@gmail.com', 'ETH');
-		// // $email->to(Input::post('email'), Input::post('username'));
-		// $email->to('d.0909660093@gmail.com', '123');
-		// $email->subject('Register');
-
-		// send an email out with a reset link
-        \Package::load('email');
-        $email = \Email::forge();
-
-        // use a view file to generate the email message
-        // $email->html_body(
-        //     \Theme::instance()->view('login/lostpassword')
-        //         ->set('url', \Uri::create('login/lostpassword/'.$hash), false)
-        //         ->set('user', $user, false)
-        //         ->render()
-        // );
-
-        // give it a subject
-        $email->subject(__('login.password-recovery'));
-
-        // add from- and to address
-        $from = \Config::get('application.email-addresses.from.website', 'website@example.org');
-        $email->from('application.email-addresses.from.website', 'website@example.org');
-        $email->to('d.0909660093@gmail.com', 'abc');
+		$email->from('vivu.vivu11@gmail.com', 'ETH');
+		// $email->to(Input::post('email'), Input::post('username'));
+		$email->to('d.0909660093@gmail.com', '123');
+		$email->subject('Register');
 
 		$email_data['name'] = "Chào " . Input::post('username'). ", " ."<br><br>" ;
 		$email_data['title'] = "Chào mừng bạn đến với ETH" ."<br>";
