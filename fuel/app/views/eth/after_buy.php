@@ -6,9 +6,8 @@
     <div class="row">
         <div class="col-md-12">Vui lòng chuyển cho tài khoản <b>Vietcombank</b> sau:</div>
     </div>
-    <div class="row"><div class="col-md-12">Số tài khoản: <b>001198535465</b></div></div>
-    <div class="row"><div class="col-md-12">Tên Chủ Tài Khoản: NGUYEN VAN TRUONG</div></div>
-    <div class="row"><div class="col-md-12">(Chi nhánh: <b>Hanoi</b> nếu chuyển liên ngân hàng)</div></div>
+    <div class="row"><div class="col-md-12">Số tài khoản: <b>0011003743647</b></div></div>
+    <div class="row"><div class="col-md-12">Tên Chủ Tài Khoản: VUONG THI LUYEN</div></div>
     <div class="row"><div class="col-md-12">Số tiền: <b><?php  echo number_format($money); ?></b> VND </div></div>
     <div class="row"><div class="col-md-12">Nội dung chuyển khoản (memo): <b>giao dich <?php echo $transaction_id; ?> tai STA</b></div></div>
     <div class="row">
