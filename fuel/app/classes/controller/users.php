@@ -35,6 +35,7 @@ class Controller_Users extends Controller_Template {
 		if (Auth::check()) {
 			Response::redirect('welcome/hello');
 		}
+		// echo Uri::base(false);
 		if (Input::method() == 'POST') {
 			$data['username'] = Input::post('username');
 			$data['email'] = Input::post('email');
@@ -56,5 +57,28 @@ class Controller_Users extends Controller_Template {
 			$this->template->content = View::forge('users/register');
 		}
 		$this->template->title = 'Register';
+	}
+
+	public function action_activation() {
+		\Package::load('email');
+		$email_data = array();
+		$url = Uri::base(false);
+		//echo Config::get('base_url'). "user/activate/". $user['hash'];
+		$email = Email::forge();
+		$email->from('vivu.vivu11@gmail.com', 'ETH');
+		// $email->to(Input::post('email'), Input::post('username'));
+		$email->to('d.0909660093@gmail.com', '123');
+		$email->subject('Register');
+
+		$email_data['name'] = "Chào " . Input::post('username'). ", " ."<br><br>" ;
+		$email_data['title'] = "Chào mừng bạn đến với ETH" ."<br>";
+		$email_data['link'] = '<a href="'. $url . "users/activate/".'">Vui lòng click vào liên kết để hoàn tất đăng ký!</a>';
+
+		$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
+		$email->send();
+
+		$response->body(json_encode(array(
+		'status' => 'ok',
+		)));
 	}
 }
