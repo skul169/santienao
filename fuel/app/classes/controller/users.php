@@ -35,10 +35,20 @@ class Controller_Users extends Controller_Template {
 		if (Auth::check()) {
 			Response::redirect('welcome/hello');
 		}
+		Session::set_flash('array', array('varA', 'varB', 'varC' => array('val1', 'val2')));
+		// $val = Validation::forge();
+
+		// $val->add_callable('MyRules');
+
+		// $val->add_callable(new MyRules());
+
+		
 		// echo Uri::base(false);
 		if (Input::method() == 'POST') {
 			$data['username'] = Input::post('username');
 			$data['email'] = Input::post('email');
+			// $val->add('username', 'Your username', array(), array('trim', 'strip_tags', 'required', 'is_upper'))->add_rule('unique', 'users.username');
+			// $val->add('email', 'Your email', array(), array('trim', 'strip_tags', 'required', 'is_upper'))->add_rule('unique', 'users.email');
 			try {
 				// $val->add_field('username', 'Your username', 'required');
 				$create_process = Auth::create_user(Input::post('username'), Input::post('password'), Input::post('email'));
@@ -77,8 +87,8 @@ class Controller_Users extends Controller_Template {
 		$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
 		$email->send();
 
-		$response->body(json_encode(array(
-		'status' => 'ok',
-		)));
+		// Response::body(json_encode(array(
+		// 'status' => 'ok',
+		// )));
 	}
 }
