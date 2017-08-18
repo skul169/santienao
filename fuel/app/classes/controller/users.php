@@ -13,7 +13,7 @@ class Controller_Users extends Controller_Template {
 		if (Input::method() == 'POST') {
 			if (Auth::login(Input::post('email'), Input::post('password'))) {
 				Session::set_flash('success', 'Bạn đăng nhập thành công!');
-				Response::redirect('welcome/hello');
+				Response::redirect('/');
 			} else {
 				Session::set_flash('error', 'Đăng nhập lỗi, vui lòng thử lại!');
 			}
@@ -33,7 +33,7 @@ class Controller_Users extends Controller_Template {
 	// Dang ky user
 	public function action_register() {
 		if (Auth::check()) {
-			Response::redirect('welcome/hello');
+			Response::redirect('/');
 		}
 		// echo Uri::base(false);
 		if (Input::method() == 'POST') {
