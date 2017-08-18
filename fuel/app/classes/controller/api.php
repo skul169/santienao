@@ -26,18 +26,28 @@ class Controller_Api extends Controller_Rest {
         return $this->response($sell);
     }
 
-    public function post_update_buy() {
-        $buy = Model_Buy::find(Input::post('order_id'));
-        $buy->status = Input::post('status', 99);
-        $buy->save();
-        return $this->response(['success' => true]);
+    public function get_update_buy() {
+        $buy = Model_Buy::find(Input::get('order_id'));
+        if ($buy) {
+            $buy->status = Input::get('status', 99);
+            $buy->save();
+            return $this->response(['success' => true]);
+        } else {
+            return $this->response(['success' => false]);
+        }
+
     }
 
-    public function post_update_sell() {
-        $sell = Model_Sell::find(Input::post('order_id'));
-        $sell->status = Input::post('status', 99);
-        $sell->save();
-        return $this->response(['success' => true]);
+    public function get_update_sell() {
+        $sell = Model_Sell::find(Input::get('order_id'));
+        if ($sell) {
+            $sell->status = Input::get('status', 99);
+            $sell->save();
+            return $this->response(['success' => true]);
+        } else {
+            return $this->response(['success' => false]);
+        }
+
     }
 
 
