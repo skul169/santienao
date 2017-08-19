@@ -16,7 +16,9 @@
     </div>
     <div class="row">
         <div class="col-md-4">Trạng thái</div>
-        <div class="col-md-8" id="status_after_buy">Đang chờ thanh toán từ Vietcombank, bạn vui lòng chuyển tiền theo hướng dẫn trên</div>
+        <div class="col-md-8" id="status_after_buy">
+            Đang chờ thanh toán từ Vietcombank, bạn vui lòng chuyển tiền theo hướng dẫn trên
+        </div>
     </div>
 </div>
 <script>
@@ -27,7 +29,14 @@
             data: {"id" : <?php echo $id; ?>},
         }).done(function(data) {
             if (data.status == '1') {
-                $("#status_after_buy").html('Đã chuyển ETH vào tài khoản của bạn thành công !');
+                $("#status_after_buy").html('Đã nhận tiền qua Vietcombank, đang tiếp tục xử lý!');
+            } else if (data.status == '2') {
+                $("#status_after_buy").html('Đã chuyển tiền qua Vietcombank, đang tiếp tục xử lý!');
+            } else if (data.status == '3') {
+                $("#status_after_buy").html('Đã nhận ETH!');
+                clearInterval(myVar);
+            } else if (data.status == '4') {
+                $("#status_after_buy").html('Đã chuyển ETH!');
                 clearInterval(myVar);
             }
         });

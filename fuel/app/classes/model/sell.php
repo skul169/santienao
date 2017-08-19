@@ -13,6 +13,11 @@ class Model_Sell extends \Orm\Model
         'updated_at',
     );
 
+    const RECEIVE_VCB = 1;
+    const PAY_VCB = 2;
+    const RECEIVE_ETH = 3;
+    const PAY_ETH = 4;
+
     protected static $_observers = array(
         'Orm\Observer_CreatedAt' => array(
             'events' => array('before_insert'),
