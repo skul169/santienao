@@ -60,24 +60,8 @@ class Controller_Users extends Controller_Template {
 				$create_process = Auth::create_user(Input::post('username'), Input::post('password'), Input::post('email'));
 
 				if ($create_process) {
+					$this->activation(Input::post('email'), Input::post('username'));
 					Session::set_flash('success', 'Đăng ký thành công!');
-					
-					//send mail
-					\Package::load('email');
-					$email_data = array();
-					$url = Uri::base(false);
-					//echo Config::get('base_url'). "user/activate/". $user['hash'];
-					$email = Email::forge();
-					$email->from('vivu.vivu11@gmail.com', 'ETH');
-					// $email->to(Input::post('email'), Input::post('username'));
-					$email->to(Input::post('email'), Input::post('username'));
-					$email->subject('Register');
-					$email_data['name'] = "Chào " . Input::post('username'). ", ";
-					$email_data['title'] = "Bạn vừa đăng ký tài khoản trên ETH. Vui lòng click vào liên kết dưới đây để hoàn tất đăng ký!";
-					$email_data['link'] = $url . "users/activation/" . Input::post('email');
-					$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
-					$email->send();
-					echo "<script> alert('Email kích hoạt tài khoản vừa được gửi đến email đăng ký của bạn, vui lòng kiểm tra hộp thư đến, hoặc thư spam để kích hoạt tài khoản!'); </script>";
 
 					Response::redirect('/login');
 				} else {
@@ -94,7 +78,26 @@ class Controller_Users extends Controller_Template {
 		$this->template->title = 'Register';
 	}
 
-	public function action_activation($email = '') {
+	public function action_activation($email, $username) {
+		//send mail
+		\Package::load('email');
+		$email_data = array();
+		$url = Uri::base(false);
+		//echo Config::get('base_url'). "user/activate/". $user['hash'];
+		$email = Email::forge();
+		$email->from('vivu.vivu11@gmail.com', 'ETH');
+		// $email->to(Input::post('email'), Input::post('username'));
+		$email->to($email, $username);
+		$email->subject('Register');
+		$email_data['name'] = "Chào " . $username. ", ";
+		$email_data['title'] = "Bạn vừa đăng ký tài khoản trên ETH. Vui lòng click vào liên kết dưới đây để hoàn tất đăng ký!";
+		$email_data['link'] = $url . "users/active/" . $email;
+		$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
+		$email->send();
+		echo "<script> alert('Email kích hoạt tài khoản vừa được gửi đến email đăng ký của bạn, vui lòng kiểm tra hộp thư đến, hoặc thư spam để kích hoạt tài khoản!'); </script>";
+	}
+
+	public function action_active($email = '') {
 		// \Package::load('email');
 		// $email_data = array();
 		// $url = Uri::base(false);
