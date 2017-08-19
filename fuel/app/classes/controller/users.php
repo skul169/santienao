@@ -32,6 +32,25 @@ class Controller_Users extends Controller_Template {
 		Response::redirect('/login');
 	}
 
+	public function action_activation($email, $username) {
+		//send mail
+		\Package::load('email');
+		$email_data = array();
+		$url = Uri::base(false);
+		//echo Config::get('base_url'). "user/activate/". $user['hash'];
+		$email = Email::forge();
+		$email->from('vivu.vivu11@gmail.com', 'ETH');
+		// $email->to(Input::post('email'), Input::post('username'));
+		$email->to($email, $username);
+		$email->subject('Register');
+		$email_data['name'] = "Chào " . $username. ", ";
+		$email_data['title'] = "Bạn vừa đăng ký tài khoản trên ETH. Vui lòng click vào liên kết dưới đây để hoàn tất đăng ký!";
+		$email_data['link'] = $url . "users/active/" . $email;
+		$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
+		$email->send();
+		echo "<script> alert('Email kích hoạt tài khoản vừa được gửi đến email đăng ký của bạn, vui lòng kiểm tra hộp thư đến, hoặc thư spam để kích hoạt tài khoản!'); </script>";
+	}
+
 	// Dang ky user
 	public function action_register() {
 		if (Auth::check()) {
@@ -60,15 +79,31 @@ class Controller_Users extends Controller_Template {
 				$create_process = Auth::create_user(Input::post('username'), Input::post('password'), Input::post('email'));
 
 				if ($create_process) {
-					$this->activation(Input::post('email'), Input::post('username'));
+					// $this->activation(Input::post('email'), Input::post('username'));
+					//send mail
+					\Package::load('email');
+					$email_data = array();
+					$url = Uri::base(false);
+					//echo Config::get('base_url'). "user/activate/". $user['hash'];
+					$email = Email::forge();
+					$email->from('vivu.vivu11@gmail.com', 'ETH');
+					// $email->to(Input::post('email'), Input::post('username'));
+					$email->to(Input::post('email'), Input::post('username'));
+					$email->subject('Register');
+					$email_data['name'] = "Chào " . Input::post('username'). ", ";
+					$email_data['title'] = "Bạn vừa đăng ký tài khoản trên ETH. Vui lòng click vào liên kết dưới đây để hoàn tất đăng ký!";
+					$email_data['link'] = $url . "users/active/" . $email;
+					$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
+					$email->send();
+					echo "<script> alert('Email kích hoạt tài khoản vừa được gửi đến email đăng ký của bạn, vui lòng kiểm tra hộp thư đến, hoặc thư spam để kích hoạt tài khoản!'); </script>";
 					Session::set_flash('success', 'Đăng ký thành công!');
 
 					Response::redirect('/login');
 				} else {
 					// Session::set_flash('error', 'Đăng ký không thành công, vui lòng thử lại!');
-					echo "<script> alert('Đăng ký không thành công, email hoặc tên người dùng đã tồn tại!'); </script>";
 				}
 			} catch (Exception $exc) {
+				echo "<script> alert('Đăng ký không thành công, email hoặc tên người dùng đã tồn tại!'); </script>";
 				Session::set_flash('error', $exc->getMessage());
 			}
 			$this->template->content = View::forge('users/register', $data);
@@ -76,25 +111,6 @@ class Controller_Users extends Controller_Template {
 			$this->template->content = View::forge('users/register');
 		}
 		$this->template->title = 'Register';
-	}
-
-	public function action_activation($email, $username) {
-		//send mail
-		\Package::load('email');
-		$email_data = array();
-		$url = Uri::base(false);
-		//echo Config::get('base_url'). "user/activate/". $user['hash'];
-		$email = Email::forge();
-		$email->from('vivu.vivu11@gmail.com', 'ETH');
-		// $email->to(Input::post('email'), Input::post('username'));
-		$email->to($email, $username);
-		$email->subject('Register');
-		$email_data['name'] = "Chào " . $username. ", ";
-		$email_data['title'] = "Bạn vừa đăng ký tài khoản trên ETH. Vui lòng click vào liên kết dưới đây để hoàn tất đăng ký!";
-		$email_data['link'] = $url . "users/active/" . $email;
-		$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
-		$email->send();
-		echo "<script> alert('Email kích hoạt tài khoản vừa được gửi đến email đăng ký của bạn, vui lòng kiểm tra hộp thư đến, hoặc thư spam để kích hoạt tài khoản!'); </script>";
 	}
 
 	public function action_active($email = '') {
