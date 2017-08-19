@@ -21,4 +21,16 @@ class Controller_Ajax extends Controller_Rest {
 
         return $this->response(['status'	=> $status]);
     }
+
+    public function get_check_status_sell() {
+        $order_id = Input::get('id', 0);
+        $order = Model_Sell::find($order_id);
+        if ($order) {
+            $status = $order->status;
+        } else {
+            $status = 0;
+        }
+
+        return $this->response(['status'	=> $status]);
+    }
 }
