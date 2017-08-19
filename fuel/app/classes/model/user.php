@@ -10,7 +10,8 @@ class Model_User extends \Orm\Model
 		'profile_fields',
 		'group',
 		'last_login',
-		'login_hash'
+		'login_hash',
+		'status'
 	);
 
 	protected static $_observers = array(
