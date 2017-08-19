@@ -51,6 +51,7 @@ class Controller_Eth extends Controller_Template
 
         $view = View::forge('eth/after_sell');
         $view->coin_number = $sell_model->coin_number;
+        $view->id = $sell_model->id;
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
