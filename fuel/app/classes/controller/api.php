@@ -7,21 +7,28 @@
  */
 class Controller_Api extends Controller_Rest {
     public function get_buy_orders() {
-        $buy = Model_Buy::find('all', array(
-            'where' => array(
-                array('status', '!=', 3),
-                array('status', '!=', 4),
-            )));
+        $buy = Model_Buy::find('all');
+        /**
+        , array(
+        'where' => array(
+        array('status', '!=', 3),
+        array('status', '!=', 4),
+        )
+        )
+         */
 
         return $this->response($buy);
     }
 
     public function get_sell_orders() {
-        $sell = Model_Sell::find('all', array(
+        $sell = Model_Sell::find('all');
+        /*
+        , array(
             'where' => array(
                 array('status', '!=', 3),
                 array('status', '!=', 4),
-            )));
+            ))
+         */
 
         return $this->response($sell);
     }
