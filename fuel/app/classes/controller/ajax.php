@@ -7,6 +7,7 @@ class Controller_Ajax extends Controller_Rest {
         $result = json_decode($result);
         return $this->response(array(
             'state'	=> $result->state,
+            'account_name' => $result->account_name
         ));
     }
 

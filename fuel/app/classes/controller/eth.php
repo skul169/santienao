@@ -30,7 +30,10 @@ class Controller_Eth extends Controller_Template
 	 */
 	public function get_sell()
 	{
-	    $view = View::forge('eth/sell');
+        $view = View::forge('eth/sell');
+        $price = Service_Transaction::get_price_eth();
+        $view->price = floor($price['sell']);
+
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
         $this->template->content = $view;
