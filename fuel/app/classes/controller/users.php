@@ -31,7 +31,7 @@ class Controller_Users extends Controller_Template {
 		Response::redirect('/login');
 	}
 
-	public function _activation($emailuser, $username) {
+	public function _activation($emailuser = '', $username = '') {
 		//send mail
 		\Package::load('email');
 		$email_data = array();
@@ -62,7 +62,6 @@ class Controller_Users extends Controller_Template {
 					// Goi ham send mail
 					$this->_activation(Input::post('email'), Input::post('username'));
 					Session::set_flash('success', 'Đăng ký thành công!');
-
 					Response::redirect('/login');
 				} else {
 					Session::set_flash('error', 'Đăng ký không thành công, vui lòng thử lại!');
