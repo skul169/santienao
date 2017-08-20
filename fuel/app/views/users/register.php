@@ -154,6 +154,9 @@
 				<div class="login-register">
 					<a href="#"><h6><u><i>Đăng nhập</i></u></h6></a>
 				</div>
+				<div class="form-group">
+					<p><i><u>Ghi chú:</u> Sau khi đăng ký, vui lòng kiểm tra hộp thư đến hoặc thư Spam để xác nhận đăng ký!</i></p>
+				</div>
 			<?php echo Form::close(); ?>
 		</div>
 	</div>
