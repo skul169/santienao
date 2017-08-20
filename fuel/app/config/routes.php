@@ -7,4 +7,5 @@ return array(
 	'login' => 'users/login',
 	'logout' => 'users/logout',
 	'register' => 'users/register',
+	'active/:emailuser' => 'users/active',
 );
