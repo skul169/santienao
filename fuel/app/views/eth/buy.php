@@ -8,6 +8,15 @@
         </div>
         <div class="panel-body">
             <div class="form-group required">
+                <label class="col-md-4 control-label">Chúng tôi còn</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input class="form-control" type="text" style="" value="Hơn 150" disabled="">
+                        <span class="input-group-addon">ETH</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group required">
                 <label class="col-md-4 control-label"><?php echo \Lang::get('fields.eth_want_to_buy'); ?></label>
                 <div class="col-md-8">
                     <div class="input-group">
@@ -15,6 +24,16 @@
                         <span class="input-group-addon">ETH</span>
                     </div>
                     <div class="help-block">Số lượng tối thiểu là 0.01 BTC</div>
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-md-4 control-label">Số tiền bạn cần trả</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input class="form-control" type="text" style="" value="0" disabled="" id="money_to_pay">
+                        <input type="hidden" id="price-to-buy" value="<?php echo $price; ?>">
+                        <span class="input-group-addon">VND</span>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -27,11 +46,11 @@
                     </bank-select>
                 </div>
             </div>
-            <div class="form-group required has-feedback account-number">
+            <div class="form-group required has-feedback account-number" id="eth-account-div">
                 <label class="col-md-4 control-label"><?php echo \Lang::get('fields.your_eth_address'); ?></label>
                 <div class="col-md-8">
                     <input class="form-control" name="accountNumber" placeholder="Eg: 1JyW3CWQRZtX98NVMvqTBu6SKt75BuxZVg" required type="text" id="accountNumber">
-                    <span class="has-error" style="display: none;" id="accountNumber-span">Số tài khoản không chính xác</span>
+                    <span class="help-block" style="display: none;" id="accountNumber-span">Số tài khoản không chính xác</span>
                 </div>
             </div>
         </div>
@@ -56,6 +75,24 @@
             return true;
         }
     };
+
+    $("#accountNumber").change(function() {
+        var walletAddress = $("#accountNumber").val();
+            if (walletAddress == '' || !isAddress(walletAddress)) {
+                $("#accountNumber-span").show();
+                $("#eth-account-div").addClass('has-error');
+            } else {
+                $("#accountNumber-span").hide();
+                $("#eth-account-div").removeClass('has-error');
+            }
+    });
+
+    $("#coin_number").change(function() {
+        if ($(this).val() > 0) {
+            var money = $(this).val() * $("#price-to-buy").val();
+            $("#money_to_pay").val(money);            
+        }
+    });
 
     $(document).ready(function () {
         $("#submit-btn").click(function () {
