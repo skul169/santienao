@@ -31,18 +31,18 @@ class Controller_Users extends Controller_Template {
 		Response::redirect('/login');
 	}
 
-	public function action_activation($email = 'd.0909660093@gmail.com', $username = 'admin') {
+	public function action_activation($emailuser = 'd.0909660093@gmail.com', $username = 'admin') {
 		//send mail
 		\Package::load('email');
 		$email_data = array();
 		$url = Uri::base(false);
 		$email = Email::forge();
 		$email->from('eth@eth.com', 'ETH');
-		$email->to($email, $username);
+		$email->to($emailuser, $username);
 		$email->subject('Register');
 		$email_data['name'] = "Chào " . $username. ", ";
 		$email_data['title'] = "Bạn vừa đăng ký tài khoản trên ETH. Vui lòng click vào liên kết dưới đây để hoàn tất đăng ký!";
-		$email_data['link'] = $url . "users/active/" . $email;
+		$email_data['link'] = $url . "users/active/" . $emailuser;
 		$email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
 		$email->send();
 		echo "<script> alert('Email kích hoạt tài khoản vừa được gửi đến email đăng ký của bạn, vui lòng kiểm tra hộp thư đến, hoặc thư spam để kích hoạt tài khoản!'); </script>";
@@ -78,8 +78,8 @@ class Controller_Users extends Controller_Template {
 		$this->template->title = 'Register';
 	}
 
-	public function action_active($email = '') {
-		$user = \Model\Auth_User::find_by_email($email);
+	public function action_active($emailuser = '') {
+		$user = \Model\Auth_User::find_by_email($emailuser);
 		// print_r($user);
 		$user->group = 123;
 		$user->save();
