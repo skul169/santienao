@@ -31,7 +31,7 @@ class Controller_Users extends Controller_Template {
 		Response::redirect('/login');
 	}
 
-	public function action_activation($emailuser = 'd.0909660093@gmail.com', $username = 'admin18') {
+	public function _activation($emailuser, $username) {
 		//send mail
 		\Package::load('email');
 		$email_data = array();
@@ -60,7 +60,7 @@ class Controller_Users extends Controller_Template {
 				$create_process = Auth::create_user(Input::post('username'), Input::post('password'), Input::post('email'));
 				if ($create_process) {
 					// Goi ham send mail
-					// $this->activation(Input::post('email'), Input::post('username'));
+					$this->_activation(Input::post('email'), Input::post('username'));
 					Session::set_flash('success', 'Đăng ký thành công!');
 
 					Response::redirect('/login');
