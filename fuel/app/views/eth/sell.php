@@ -45,7 +45,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label ">Tên tài khoản nhận tiền</label>
                 <div class="col-md-8">
-                    <input class="form-control" disabled="" name="accountName" required="" type="text" id="accountName-input">
+                    <input class="form-control" disabled="" name="accountNameDisable" required="" type="text" id="accountName-input" value="">
+                    <input type="hidden" value="" name="accountName" id="accountNameHidden">
                 </div>
             </div>
             <div class="form-group">
@@ -135,6 +136,7 @@ $(document).ready(function () {
                 $("#accountNumber-div").removeClass('has-error');
                 $("#accountNumber-sign-span").removeClass('glyphicon-cog fa-spin').addClass('glyphicon-ok');
                 $("#accountName-input").val(data.account_name);
+                $("#accountNameHidden").val(data.account_name);
             } else {
                 $("#accountNumber-div").addClass('has-error');
                 $("#accountNumber-sign-span").removeClass('glyphicon-ok').addClass('glyphicon-cog fa-spin');

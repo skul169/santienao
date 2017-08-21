@@ -55,6 +55,12 @@ class Controller_Eth extends Controller_Template
         $view = View::forge('eth/after_sell');
         $view->coin_number = $sell_model->coin_number;
         $view->id = $sell_model->id;
+        $view->transaction_id = $sell_model->transaction_id;
+        $view->bank_number = $sell_model->bank_number;
+        $view->bank_acc_name = Input::post('accountName');
+        $view->money = $sell_model->money;
+        $view->price = floor($price['sell']);
+        $view->transaction_time = $sell_model->created_at;
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
@@ -89,6 +95,8 @@ class Controller_Eth extends Controller_Template
         $view->transaction_id = $buy_model->transaction_id;
         $view->coin_address = $buy_model->coin_address;
         $view->id = $buy_model->id;
+        $view->price = floor($price['buy']);
+        $view->transaction_time = $buy_model->created_at;
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
