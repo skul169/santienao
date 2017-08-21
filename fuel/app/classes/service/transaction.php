@@ -24,4 +24,10 @@ class Service_Transaction {
 
         return $price;
     }
+
+    public static function get_price_eth_in_usd() {
+        $file = file_get_contents('https://api.coinbase.com/v2/exchange-rates?currency=ETH');
+        $result = json_decode($file);
+        return $result->data->rates->USD;
+    }
 }

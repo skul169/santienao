@@ -57,5 +57,9 @@ class Controller_Api extends Controller_Rest {
 
     }
 
+    public function get_price_usd() {
+        $price = Service_Transaction::get_price_eth_in_usd();
+        return $this->response(['price' => $price]);
+    }
 
 }
