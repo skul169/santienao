@@ -65,10 +65,14 @@
                 </div>
             </li>
         </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <a class="nav-link" href="/user/register"><?php echo \Lang::get('fields.register'); ?></a>
-            <a class="nav-link" href="/users/login"><?php echo \Lang::get('fields.login'); ?></a>
-        </div>
+        <ul class="navbar-nav mr-auto navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/user/register"><?php echo \Lang::get('fields.register'); ?></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/login"><?php echo \Lang::get('fields.login'); ?></a>
+            </li>
+        </ul>
     </div>
 </nav>
 <div>
