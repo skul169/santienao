@@ -117,9 +117,9 @@
             data: {"id" : <?php echo $id; ?>},
         }).done(function(data) {
             if (data.status == '1') {
-                $("#status_after_buy").html('Đã nhận tiền qua Vietcombank, đang tiếp tục xử lý!');
+                $("#status_after_buy").html('Đã nhận tiền qua Vietcombank!');
             } else if (data.status == '2') {
-                $("#status_after_buy").html('Đã chuyển tiền qua Vietcombank, đang tiếp tục xử lý!');
+                $("#status_after_buy").html('Đã chuyển tiền qua Vietcombank!');
             } else if (data.status == '3') {
                 $("#status_after_buy").html('Đã nhận ETH!');
                 clearInterval(myVar);
