@@ -76,6 +76,8 @@ class Controller_Api extends Controller_Rest {
         }
 
         $setting->save();
+
+        return $this->response(['success' => true]);
     }
 
 }
