@@ -90,7 +90,7 @@
     $("#coin_number").change(function() {
         if ($(this).val() > 0) {
             var money = $(this).val() * $("#price-to-buy").val();
-            $("#money_to_pay").val(money);            
+            $("#money_to_pay").val(money.format());
         }
     });
 

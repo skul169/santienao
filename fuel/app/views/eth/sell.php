@@ -32,11 +32,6 @@
             <div class="form-group required has-feedback account-number has-error" id="accountNumber-div">
                 <label class="col-md-4 control-label">Số tài khoản nhận tiền</label>
                 <div class="col-md-8">
-                    <!-- <input class="form-control" name="accountNumber" placeholder="Số tài khoản VCB. Vd: 05010000xxxxx" required="required" type="text"> -->
-                    <!-- <span class="form-control-feedback glyphicon glyphicon-cog fa-spin"></span> -->
-                    <!-- <span class="form-control-feedback glyphicon glyphicon-ok"></span> -->
-                    <!-- <div class="help-block">Số tài khoản không đúng</div> -->
-                    <!-- <a class="btn-refetch  ng-hide" href="">Thử lại</a> -->
                     <input class="form-control" name="accountNumber" placeholder="Số tài khoản VCB. Vd: 05010000xxxxx" required type="text" id="accountNumber">
                     <span id="accountNumber-sign-span" class="form-control-feedback glyphicon glyphicon-cog fa-spin"></span>
                     <span class="help-block" style="display: none;" id="accountNumber-span">Số tài khoản không chính xác</span>
@@ -122,7 +117,7 @@ $(document).ready(function () {
             $("#eth-div").removeClass('has-error');
             //price
             var money = $("#price-hidden").val() * $(this).val();
-            $("#money-count").val(money);
+            $("#money-count").val(money.format());
         }
     });
 
