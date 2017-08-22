@@ -30,5 +30,5 @@
 </div>
 <hr>
 <div class="row">
-    <div id="price-chart" style="min-width: 500px; width: 95%; height: 600px; margin: 0 auto"></div>
+    <div id="price-chart" style="min-width: 300px; width: 95%; height: 600px; margin: 0 auto"></div>
 </div>
