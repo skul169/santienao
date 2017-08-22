@@ -36,7 +36,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">ETH</a>
+    <a class="navbar-brand" href="#" style="color: #fff !important;">ETH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,20 +45,20 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/"><?php echo \Lang::get('fields.home'); ?> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/" style="color: #fff !important;"><?php echo \Lang::get('fields.home'); ?> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/static/term"><?php echo \Lang::get('fields.term'); ?></a>
+                <a class="nav-link" href="/static/term" style="color: #fff !important;"><?php echo \Lang::get('fields.term'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/static/manual"><?php echo \Lang::get('fields.manual'); ?></a>
+                <a class="nav-link" href="/static/manual" style="color: #fff !important;"><?php echo \Lang::get('fields.manual'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/static/news"><?php echo \Lang::get('fields.news'); ?></a>
+                <a class="nav-link" href="/static/news" style="color: #fff !important;"><?php echo \Lang::get('fields.news'); ?></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false"><?php echo \Lang::get('fields.language'); ?></a>
+                   aria-haspopup="true" aria-expanded="false" style="color: #fff !important;"><?php echo \Lang::get('fields.language'); ?></a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/welcome/language/vi"><?php echo \Lang::get('fields.vietnamese'); ?></a>
                     <a class="dropdown-item" href="/welcome/language/en"><?php echo \Lang::get('fields.english'); ?></a>
@@ -67,10 +67,10 @@
         </ul>
         <ul class="navbar-nav mr-auto navbar-right">
             <li class="nav-item">
-                <a class="nav-link" href="/user/register"><?php echo \Lang::get('fields.register'); ?></a>
+                <a class="nav-link" href="/user/register" style="color: #fff !important;"><?php echo \Lang::get('fields.register'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user/login"><?php echo \Lang::get('fields.login'); ?></a>
+                <a class="nav-link" href="/user/login" style="color: #fff !important;"><?php echo \Lang::get('fields.login'); ?></a>
             </li>
         </ul>
     </div>
