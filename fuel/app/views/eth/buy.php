@@ -58,7 +58,7 @@
             <span style="display: none;" id="processing">
                 <i class="fa-2x ng-scope"><?php echo \Lang::get('fields.processing'); ?></i>
             </span>
-            <button class="btn" type="button" id="submit-btn"><?php echo \Lang::get('fields.next'); ?></button>
+            <button class="btn btn-primary" type="button" id="submit-btn"><?php echo \Lang::get('fields.next'); ?></button>
         </div>
     </div>
 </form>

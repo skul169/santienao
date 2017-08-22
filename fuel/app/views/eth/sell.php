@@ -69,7 +69,7 @@
                 <i class="fa-2x ">Đang xử lý...</i>
                 <i class="fa fa-spinner fa-spin fa-2x"></i>
             </span>
-            <button class="btn" type="button" id="submit-btn">Tiếp tục</button>
+            <button class="btn btn-primary" type="button" id="submit-btn">Tiếp tục</button>
         </div>
     </div>
 </form>
