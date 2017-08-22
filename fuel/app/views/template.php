@@ -67,10 +67,10 @@
         </ul>
         <ul class="navbar-nav mr-auto navbar-right">
             <li class="nav-item">
-                <a class="nav-link" href="/user/register" style="color: #fff !important;"><?php echo \Lang::get('fields.register'); ?></a>
+                <a class="nav-link" href="/users/register" style="color: #fff !important;"><?php echo \Lang::get('fields.register'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user/login" style="color: #fff !important;"><?php echo \Lang::get('fields.login'); ?></a>
+                <a class="nav-link" href="/users/login" style="color: #fff !important;"><?php echo \Lang::get('fields.login'); ?></a>
             </li>
         </ul>
     </div>
