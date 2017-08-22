@@ -51,10 +51,10 @@
                 <a class="nav-link" href="/static/term"><?php echo \Lang::get('fields.term'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><?php echo \Lang::get('fields.manual'); ?></a>
+                <a class="nav-link" href="/static/manual"><?php echo \Lang::get('fields.manual'); ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><?php echo \Lang::get('fields.news'); ?></a>
+                <a class="nav-link" href="/static/news"><?php echo \Lang::get('fields.news'); ?></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
