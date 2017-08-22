@@ -16,7 +16,7 @@
         }
     </style>
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>ETH sell-buy</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
@@ -48,7 +48,7 @@
                 <a class="nav-link" href="/"><?php echo \Lang::get('fields.home'); ?> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><?php echo \Lang::get('fields.term'); ?></a>
+                <a class="nav-link" href="/static/term"><?php echo \Lang::get('fields.term'); ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#"><?php echo \Lang::get('fields.manual'); ?></a>
