@@ -57,5 +57,27 @@ class Controller_Api extends Controller_Rest {
 
     }
 
+    public function get_price_usd() {
+        $price = Service_Transaction::get_price_eth_in_usd();
+        return $this->response(['price' => $price]);
+    }
+
+    public function get_update_price_in_vnd() {
+        $buy = Input::get('buy', 0);
+        $sell = Input::get('sell', 0);
+
+        $setting = Model_Setting::find('first');
+        if ($buy > 0) {
+            $setting->buy_rate = $buy;
+        }
+
+        if ($sell > 0) {
+            $setting->sell_rate = $sell;
+        }
+
+        $setting->save();
+
+        return $this->response(['success' => true]);
+    }
 
 }

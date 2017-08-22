@@ -11,17 +11,23 @@ class Service_Transaction {
     }
 
     public static function get_price_eth() {
-//        $file = file_get_contents('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD');
-//        $result = json_decode($file);
+        // $file = file_get_contents('https://api.coinbase.com/v2/exchange-rates?currency=ETH');
+        // $result = json_decode($file);
+        // $price_usd = $result->data->rates->USD;
+
+        // $setting = Model_Setting::find('first');
+        // $price['spot'] = $price_usd * $setting->usd_vnd_rate;
+        // $price['buy'] = ($price['spot'] * $setting->buy_rate / 100) + $price['spot'];
+        // $price['sell'] = $price['spot'] - ($price['spot'] * $setting->sell_rate / 100);
+        $setting = Model_Setting::find('first');
+        $price['buy'] = $setting->buy_rate;
+        $price['sell'] = $setting->sell_rate;
+        return $price;
+    }
+
+    public static function get_price_eth_in_usd() {
         $file = file_get_contents('https://api.coinbase.com/v2/exchange-rates?currency=ETH');
         $result = json_decode($file);
-        $price_usd = $result->data->rates->USD;
-
-        $setting = Model_Setting::find('first');
-        $price['spot'] = $price_usd * $setting->usd_vnd_rate;
-        $price['buy'] = ($price['spot'] * $setting->buy_rate / 100) + $price['spot'];
-        $price['sell'] = $price['spot'] - ($price['spot'] * $setting->sell_rate / 100);
-
-        return $price;
+        return $result->data->rates->USD;
     }
 }
