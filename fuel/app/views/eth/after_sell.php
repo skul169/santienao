@@ -35,8 +35,8 @@
             <td></td>
             <td>
                 <h6>
-                    Chú ý : Sau khi bạn chuyển ethereum, chúng tôi sẽ thanh toán ngay khi có 1 xác nhận trên ví coinbase. Việc xác nhận được hoàn toàn tự động bởi hệ thống Bitcoin network trên thế giới nên bạn không cần phải làm gì thêm.
-                    <br>Chú ý rằng giá ethereum biến động liên tục. Chúng tôi sẽ chốt giá và chuyển khoản ngân hàng cho bạn ngay khi đủ 1 xác nhận (confirmation) trên bitcoin network.
+                    Chú ý : Sau khi bạn chuyển ethereum, chúng tôi sẽ thanh toán ngay khi có 1 xác nhận trên ví coinbase. Việc xác nhận được hoàn toàn tự động bởi hệ thống Etherium network trên thế giới nên bạn không cần phải làm gì thêm.
+                    <br>Chú ý rằng giá ethereum biến động liên tục. Chúng tôi sẽ chốt giá và chuyển khoản ngân hàng cho bạn ngay khi đủ 1 xác nhận (confirmation) trên Etherium network.
                 </h6>
             </td>
         </tr>
