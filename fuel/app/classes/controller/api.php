@@ -63,16 +63,26 @@ class Controller_Api extends Controller_Rest {
     }
 
     public function get_update_price_in_vnd() {
-        $buy = Input::get('buy', 0);
-        $sell = Input::get('sell', 0);
+        /////vcbrate
+        /// biendo_tren
+        ///biendo_duoi
+
+
+        $buy_rate = Input::get('biendo_tren', 0);
+        $sell_rate = Input::get('biendo_duoi', 0);
+        $usd_vnd_rate = Input::get('vcbrate', 0);
 
         $setting = Model_Setting::find('first');
-        if ($buy > 0) {
-            $setting->buy_rate = $buy;
+        if ($buy_rate > 0) {
+            $setting->buy_rate = $buy_rate;
         }
 
-        if ($sell > 0) {
-            $setting->sell_rate = $sell;
+        if (isset($sell_rate)) {
+            $setting->sell_rate = $sell_rate;
+        }
+
+        if ($usd_vnd_rate > 0) {
+            $setting->usd_vnd_rate = $usd_vnd_rate;
         }
 
         $setting->save();
