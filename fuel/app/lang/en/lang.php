@@ -31,5 +31,9 @@ return array(
         'your_bank_account' => 'Your bank account number',
         'next' => 'Next',
         'processing' => 'Processing...',
+        'eth_market' => 'ETHEREUM Market',
+        'eth_market_desc' => 'You can exchange Ethereum FAST and SAFELY',
+        'buy_directly' => 'Buy',
+        'sell_directly' => 'Sell',
     )
 );
