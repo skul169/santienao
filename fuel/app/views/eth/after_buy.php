@@ -149,7 +149,7 @@
         document.getElementById("countdown_pay").innerHTML = minutes + " phút : " + seconds + " giây";
 
         // If the count down is over, write some text
-        if (distance < 0) {
+        if (distance < 1) {
             //$("#done-btn").trigger('click');
             clearInterval(x);
         }
