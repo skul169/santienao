@@ -33,7 +33,7 @@ return array(
         'processing' => 'Đang xử lý...',
         'eth_market' => 'Chợ mua bán ETHEREUM',
         'eth_market_desc' => 'Nơi mua bán Ethereum AN TOÀN và NHANH CHÓNG',
-        'buy_directly' => 'Bán ngay',
-        'sell_directly' => 'Mua ngay',
+        'buy_directly' => 'Mua ngay',
+        'sell_directly' => 'Bán ngay',
     )
 );

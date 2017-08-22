@@ -21,8 +21,8 @@
 
                             <p>Vui lòng chuyển đúng <b class="content_btc"><?php echo $coin_number; ?> ETH</b> vào địa chỉ</p>
                             <p>
-                                <input id="wallet_btc" type="text" readonly="true" value="0x39742C8C5cD2564f9B9C39973730Aa57110dc23B" size="45" style="padding: 7px 20px;">
-                                <button class="btn btn-copy" data-clipboard-target="#wallet_btc">copy</button>
+                                <input id="wallet_to_copy" type="text" value="0x39742C8C5cD2564f9B9C39973730Aa57110dc23B" size="45" style="padding: 7px 20px;">
+                                <button class="btn btn-copy" data-clipboard-text="0x39742C8C5cD2564f9B9C39973730Aa57110dc23B">copy</button>
                             </p>
 
                         </div>
@@ -120,6 +120,7 @@
         </tbody></table>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 <script>
     var myVar = setInterval(function(){
         $.ajax({
