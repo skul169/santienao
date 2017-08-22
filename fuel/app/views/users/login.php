@@ -105,7 +105,7 @@
 					?>
 				</div>
 				<div class="login-register">
-					<a href="#"><h6><u><i>Đăng ký</i></u></h6></a>
+					<a href="/users/register"><h6><u><i>Đăng ký</i></u></h6></a>
 				</div>
 			<?php echo Form::close(); ?>
 		</div>
