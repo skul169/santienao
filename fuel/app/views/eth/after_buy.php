@@ -13,7 +13,7 @@
                 (Chi nhánh: <strong>Ha Noi</strong>- nếu bạn chuyển liên ngân hàng)<br>
                 Số tiền: <strong></strong><?php  echo number_format($money); ?><br>
                 Nội dung chuyển khoản (memo):<br>
-                <i><b>giao dich <?php echo $transaction_id; ?> tai STA</b></i> <br>
+                <i><b>giao dich <?php echo $transaction_id; ?> tai B-ETH</b></i> <br>
             </td>
         </tr>
 
@@ -149,7 +149,8 @@
         document.getElementById("countdown_pay").innerHTML = minutes + " phút : " + seconds + " giây";
 
         // If the count down is over, write some text
-        if (distance < 1) {
+        if (distance < 2) {
+            window.location = window.location.protocol + "//" + window.location.hostname;
             //$("#done-btn").trigger('click');
             clearInterval(x);
         }

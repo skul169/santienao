@@ -158,7 +158,8 @@
         document.getElementById("countdown_pay").innerHTML = minutes + " phút : " + seconds + " giây";
 
         // If the count down is over, write some text
-        if (distance < 1) {
+        if (distance < 2) {
+            window.location = window.location.protocol + "//" + window.location.hostname;
             //$("#done-btn").trigger('click');
             clearInterval(x);
         }
