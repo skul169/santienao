@@ -63,11 +63,6 @@ class Controller_Api extends Controller_Rest {
     }
 
     public function get_update_price_in_vnd() {
-        /////vcbrate
-        /// biendo_tren
-        ///biendo_duoi
-
-
         $buy_rate = Input::get('biendo_tren', 0);
         $sell_rate = Input::get('biendo_duoi', 0);
         $usd_vnd_rate = Input::get('vcbrate', 0);
@@ -87,6 +82,38 @@ class Controller_Api extends Controller_Rest {
 
         $setting->save();
 
+        return $this->response(['success' => true]);
+    }
+
+    public function get_update_eth_address() {
+        $eth_address = Input::get('eth_address', '0000');
+        $setting = Model_Setting::find('first');
+        $setting->eth_account_address = $eth_address;
+        $setting->save();
+        return $this->response(['success' => true]);
+    }
+
+    public function get_update_vcb_account() {
+        $vcb_id = Input::get('vcb_account_id', '0000');
+        $vcb_name = Input::get('vcb_account_name', '0000');
+        $setting = Model_Setting::find('first');
+        $setting->vcb_account_id = $vcb_id;
+        $setting->vcb_account_name = $vcb_name;
+        $setting->save();
+        return $this->response(['success' => true]);
+    }
+
+    public function get_update_funds() {
+        $total_buy = Input::get('total_buy', '1');
+        $total_sell = Input::get('total_sell', '1');
+        $total_buy_24 = Input::get('total_buy_24', '1');
+        $total_sell_24 = Input::get('total_sell_24', '1');
+        $setting = Model_Setting::find('first');
+        $setting->total_buy = $total_buy;
+        $setting->total_sell = $total_sell;
+        $setting->total_buy_24 = $total_buy_24;
+        $setting->total_sell_24 = $total_sell_24;
+        $setting->save();
         return $this->response(['success' => true]);
     }
 
