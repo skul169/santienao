@@ -73,7 +73,7 @@ class Controller_Api extends Controller_Rest {
         $usd_vnd_rate = Input::get('vcbrate', 0);
 
         $setting = Model_Setting::find('first');
-        if ($buy_rate > 0) {
+        if (isset($buy_rate)) {
             $setting->buy_rate = $buy_rate;
         }
 
