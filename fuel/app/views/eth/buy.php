@@ -87,10 +87,12 @@
             }
     });
 
-    $("#coin_number").change(function() {
+    $('#coin_number').on('keyup keypress blur change', function(e) {
         if ($(this).val() > 0) {
             var money = $(this).val() * $("#price-to-buy").val();
             $("#money_to_pay").val(money.format());
+        } else {
+            $("#money_to_pay").val(0);
         }
     });
 

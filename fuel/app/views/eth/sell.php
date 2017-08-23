@@ -33,7 +33,7 @@
                 <label class="col-md-4 control-label">Số tài khoản nhận tiền</label>
                 <div class="col-md-8">
                     <input class="form-control" name="accountNumber" placeholder="Số tài khoản VCB. Vd: 05010000xxxxx" required type="text" id="accountNumber">
-                    <span id="accountNumber-sign-span" class="form-control-feedback glyphicon glyphicon-cog fa-spin"></span>
+                    <span id="accountNumber-sign-span" class="form-control-feedback glyphicon glyphicon-remove"></span>
                     <span class="help-block" style="display: none;" id="accountNumber-span">Số tài khoản không chính xác</span>
                 </div>
             </div>
@@ -110,9 +110,10 @@
 </div>
 <script>
 $(document).ready(function () {
-    $("#eth-input").change(function(){
+    $('#eth-input').on('keyup keypress blur change', function(e) {
         if(isNaN($(this).val()) || $(this).val() <= 0) {
             $("#eth-div").addClass('has-error');
+            $("#money-count").val(0);
         } else {
             $("#eth-div").removeClass('has-error');
             //price
@@ -129,12 +130,14 @@ $(document).ready(function () {
         }).done(function(data) {
             if (data.state != 'error') {
                 $("#accountNumber-div").removeClass('has-error');
-                $("#accountNumber-sign-span").removeClass('glyphicon-cog fa-spin').addClass('glyphicon-ok');
+                $("#accountNumber-sign-span").removeClass('glyphicon-remove').addClass('glyphicon-ok');
                 $("#accountName-input").val(data.account_name);
                 $("#accountNameHidden").val(data.account_name);
+                $("#accountNumber-span").hide();
             } else {
                 $("#accountNumber-div").addClass('has-error');
-                $("#accountNumber-sign-span").removeClass('glyphicon-ok').addClass('glyphicon-cog fa-spin');
+                $("#accountNumber-sign-span").removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                $("#accountNumber-span").show();
             }
         });
     });
