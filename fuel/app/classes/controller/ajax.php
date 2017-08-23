@@ -34,4 +34,11 @@ class Controller_Ajax extends Controller_Rest {
 
         return $this->response(['status'	=> $status]);
     }
+
+    public function get_get_price() {
+        $price = Service_Transaction::get_price_eth();
+        $price['sell'] = number_format(floor($price['sell']));
+        $price['buy'] = number_format(floor($price['buy']));
+        return $this->response(['price'	=> $price]);
+    }
 }

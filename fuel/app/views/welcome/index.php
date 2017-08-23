@@ -32,3 +32,15 @@
 <div class="row">
     <div id="price-chart" style="min-width: 300px; width: 95%; height: 600px; margin: 0 auto"></div>
 </div>
+
+<script>
+    var myVar = setInterval(function(){
+        $.ajax({
+            url: "/ajax/get_price.json",
+            type: 'GET',
+        }).done(function(data) {
+            $("#buy-price-text").html(data.price.buy + ' VNĐ');
+            $("#sell-price-text").html(data.price.sell + ' VNĐ');
+        });
+    }, 5000);
+</script>
