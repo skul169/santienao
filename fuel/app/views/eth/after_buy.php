@@ -8,8 +8,8 @@
             <td>Hướng dẫn thanh toán</td>
             <td>
                 Vui lòng chuyển khoản cho tài khoản Vietcombank sau: <br>
-                Số tài khoản: <strong>0011003743647</strong><br>
-                Tên chủ tài khoản: <strong>VUONG THI LUYEN</strong><br>
+                Số tài khoản: <strong><?php echo $setting->vcb_account_id; ?></strong><br>
+                Tên chủ tài khoản: <strong><?php echo $setting->vcb_account_name; ?></strong><br>
                 (Chi nhánh: <strong>Ha Noi</strong>- nếu bạn chuyển liên ngân hàng)<br>
                 Số tiền: <strong></strong><?php  echo number_format($money); ?><br>
                 Nội dung chuyển khoản (memo):<br>

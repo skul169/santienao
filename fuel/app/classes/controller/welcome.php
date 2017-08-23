@@ -35,7 +35,8 @@ class Controller_Welcome extends Controller_Template
 
 	    $count = Service_Transaction::count_all();
         $this->template->count = $count;
-        $this->template->content = $view;
+		$this->template->content = $view;
+		$this->template->setting = Model_Setting::find('first');
 //		return Response::forge();
 	}
 

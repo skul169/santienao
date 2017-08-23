@@ -86,13 +86,13 @@
                 <h2><?php echo \Lang::get('fields.funds'); ?></h2>
                 <div class="row"><?php echo \Lang::get('fields.total_transaction'); ?></div>
                 <ul>
-                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo isset($count['buy']) ? number_format($count['buy']) : 0; ?> ETH</li>
-                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo isset($count['sell']) ? number_format($count['sell']) : 0; ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo isset($setting->total_buy) ? number_format($setting->total_buy) : 0; ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo isset($setting->total_sell) ? number_format($setting->total_sell) : 0; ?> ETH</li>
                 </ul>
                 <div class="row"><?php echo \Lang::get('fields.total_transaction_24'); ?></div>
                 <ul>
-                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo isset($count['buy24']) ? number_format($count['buy24']) : 0;?> ETH</li>
-                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo isset($count['sell24']) ? number_format($count['sell24']) : 0; ?> ETH</li>
+                    <li><?php echo \Lang::get('fields.buy_transaction'); ?>: <?php echo isset($setting->total_buy_24) ? number_format($setting->total_buy_24) : 0;?> ETH</li>
+                    <li><?php echo \Lang::get('fields.sell_Transaction'); ?>: <?php echo isset($setting->total_sell_24) ? number_format($setting->total_sell_24) : 0; ?> ETH</li>
                 </ul>
                 <h2><?php echo \Lang::get('fields.support'); ?></h2>
                 <h5>Live chat:</h5>

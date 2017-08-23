@@ -36,6 +36,7 @@ class Controller_Eth extends Controller_Template
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
+        $this->template->setting = Model_Setting::find('first');
         $this->template->content = $view;
 //		return Response::forge($view);
 	}
@@ -61,9 +62,11 @@ class Controller_Eth extends Controller_Template
         $view->money = $sell_model->money;
         $view->price = floor($price['sell']);
         $view->transaction_time = $sell_model->created_at;
+        $view->setting = Model_Setting::find('first');
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
+        $this->template->setting = Model_Setting::find('first');
         $this->template->content = $view;
     }
 
@@ -74,6 +77,7 @@ class Controller_Eth extends Controller_Template
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
+        $this->template->setting = Model_Setting::find('first');
         $this->template->content = $view;
     }
 
@@ -97,9 +101,11 @@ class Controller_Eth extends Controller_Template
         $view->id = $buy_model->id;
         $view->price = floor($price['buy']);
         $view->transaction_time = $buy_model->created_at;
+        $view->setting = Model_Setting::find('first');
 
         $count = Service_Transaction::count_all();
         $this->template->count = $count;
+        $this->template->setting = Model_Setting::find('first');
 
         $this->template->content = $view;
     }
