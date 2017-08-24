@@ -95,12 +95,17 @@ class Controller_Api extends Controller_Rest {
 
     public function get_update_vcb_account() {
         $vcb_id = Input::get('vcb_account_id', '0000');
-        $vcb_name = Input::get('vcb_account_name', '0000');
-        $setting = Model_Setting::find('first');
-        $setting->vcb_account_id = $vcb_id;
-        $setting->vcb_account_name = $vcb_name;
-        $setting->save();
-        return $this->response(['success' => true]);
+        $result = file_get_contents('https://santienao.com/api/v1/bank_accounts/' . $vcb_id);
+        $result = json_decode($result);
+        if ($result->state != 'error' && isset($result->account_name)) {
+            $setting = Model_Setting::find('first');
+            $setting->vcb_account_id = $vcb_id;
+            $setting->vcb_account_name = $result->account_name;
+            $setting->save();
+            return $this->response(['success' => true, 'account_name' => $result->account_name]);
+        } else {
+            return $this->response(['success' => false, 'message' => 'Thông tin account ID không chính xác!']);
+        }
     }
 
     public function get_update_funds() {
