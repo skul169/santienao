@@ -1,153 +1,104 @@
--- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 16, 2017 lúc 08:07 SA
--- Phiên bản máy phục vụ: 10.1.21-MariaDB
--- Phiên bản PHP: 5.6.30
+/*
+Navicat MySQL Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+Source Server         : 45.63.34.172_3306
+Source Server Version : 50552
+Source Host           : 45.63.34.172:3306
+Source Database       : santienao
 
+Target Server Type    : MYSQL
+Target Server Version : 50552
+File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+Date: 2017-08-25 10:03:28
+*/
 
---
--- Cơ sở dữ liệu: `santienao`
---
+SET FOREIGN_KEY_CHECKS=0;
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `buys`
---
-
+-- ----------------------------
+-- Table structure for buys
+-- ----------------------------
+DROP TABLE IF EXISTS `buys`;
 CREATE TABLE `buys` (
-  `id` bigint(20) NOT NULL,
-  `coin_number` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `transaction_id` varchar(255) NOT NULL,
+  `coin_number` double(20,9) NOT NULL,
   `money` int(11) NOT NULL,
   `coin_address` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of buys
+-- ----------------------------
 
---
--- Cấu trúc bảng cho bảng `sells`
---
-
+-- ----------------------------
+-- Table structure for sells
+-- ----------------------------
+DROP TABLE IF EXISTS `sells`;
 CREATE TABLE `sells` (
-  `id` bigint(20) NOT NULL,
-  `coin_number` int(11) NOT NULL,
-  `bank_number` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `transaction_id` varchar(255) NOT NULL,
+  `coin_number` double(20,9) NOT NULL,
+  `bank_number` varchar(255) NOT NULL,
   `money` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of sells
+-- ----------------------------
 
---
--- Cấu trúc bảng cho bảng `settings`
---
-
+-- ----------------------------
+-- Table structure for settings
+-- ----------------------------
+DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usd_vnd_rate` int(11) NOT NULL,
-  `buy_rate` int(11) NOT NULL,
-  `sell_rate` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `buy_rate` double(3,1) NOT NULL,
+  `sell_rate` double(3,1) NOT NULL,
+  `eth_account_address` varchar(255) NOT NULL DEFAULT '0x8DC20E3AEc0346827763c10F879e681b98FF13Db',
+  `vcb_account_id` varchar(255) NOT NULL DEFAULT '0011003743647',
+  `vcb_account_name` varchar(255) NOT NULL DEFAULT 'VUONG THI LUYEN',
+  `total_buy` int(11) NOT NULL DEFAULT '1',
+  `total_sell` int(11) NOT NULL DEFAULT '1',
+  `total_buy_24` int(11) NOT NULL DEFAULT '1',
+  `total_sell_24` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
---
--- Đang đổ dữ liệu cho bảng `settings`
---
+-- ----------------------------
+-- Records of settings
+-- ----------------------------
+INSERT INTO `settings` VALUES ('1', '23000', '7.5', '-5.0', '0x8DC20E3AEc0346827763c10F879e681b98FF13Db', '0011003743647', 'VUONG THI LUYEN', '0', '0', '0', '0');
 
-INSERT INTO `settings` (`id`, `usd_vnd_rate`, `buy_rate`, `sell_rate`) VALUES
-(1, 22760, 20, 20);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `users`
---
-
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) DEFAULT '0' COMMENT '0 => chua kich hoat, 1 => da kich hoat',
   `profile_fields` text COLLATE utf8_unicode_ci NOT NULL,
   `group` int(11) NOT NULL,
   `last_login` int(11) NOT NULL,
   `login_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `profile_fields`, `group`, `last_login`, `login_hash`, `created_at`, `updated_at`) VALUES
-(1, 'test@gmail.com', 'test@gmail.com', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', '', 0, 1502863569, '41282ecef0a3d10b988dbbce1886d092e1333a11', 0, 0);
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `buys`
---
-ALTER TABLE `buys`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `sells`
---
-ALTER TABLE `sells`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `settings`
---
-ALTER TABLE `settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `buys`
---
-ALTER TABLE `buys`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT cho bảng `sells`
---
-ALTER TABLE `sells`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT cho bảng `settings`
---
-ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT cho bảng `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('1', 'test@gmail.com', 'test@gmail.com', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', '0', '', '0', '1503374350', '53a159e405aaf921b438326dd623331f6f01a134', '0', '0');
