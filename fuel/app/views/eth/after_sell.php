@@ -19,7 +19,10 @@
                                 qrCode("qrcode", "<?php echo $setting->eth_account_address; ?>", "<?php echo $coin_number; ?>");
                             </script>
 
-                            <p>Vui lòng chuyển đúng <b class="content_btc"><?php echo $coin_number; ?> ETH</b> vào địa chỉ</p>
+                            <p>
+                                Vui lòng chuyển đúng <b class="content_btc"><?php echo $coin_number; ?> ETH</b> vào địa chỉ<br>
+                                Nội dung chuyển khoản: giao dich <?php echo $transaction_id; ?> tai B-ETH
+                            </p>
                             <p>
                                 <input id="wallet_to_copy" type="text" value="<?php echo $setting->eth_account_address; ?>" size="45" style="padding: 7px 20px;">
                                 <button class="btn btn-copy" data-clipboard-text="<?php echo $setting->eth_account_address; ?>">copy</button>
